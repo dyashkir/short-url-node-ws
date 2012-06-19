@@ -15,15 +15,30 @@
       <label>Your URL:</label>
       <input data-bind="value: userURL"/>
       <button type="submit" class="btn btn-success" data-bind="enable: userURL().length > 0">Short it!</button>
+      <button class="btn" data-bind="click: dummy">Add dummy</button>
       <label>Short URL:</label>
       <p data-bind="text: shortURL"></p>
       <a href="https://twitter.com/share" class="twitter-share-button" data-text="testing url" data-via="dyashkir" data-count="none" data-hashtags="test">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </form>
-
-    <div>
-    </div>
-
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Count</th>
+            <th>IP</th>
+            <th>Referer</th>
+            <th>User Agent</th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: forwards">
+          <tr>
+            <td data-bind="text: count">1</td>
+            <td data-bind="text: ip">127.0.0.1</td>
+            <td data-bind="text: referer">http://tweetsdfsdfsfdsf</td>
+            <td data-bind="text: userAgent">Mozial;kaasdkjhksjhdfskjfhskfhjshfskfdhskfjh</td>
+          </tr>
+      </tbody>
+      </table>
   </div>
   <script type="text/javascript" src="model.js"></script>
 </body>
