@@ -26,9 +26,8 @@ var UrlShortenerViewModel = function() {
     console.log('opned');
   }
   self.socket.onmessage = function(event) {
-    console.log(event.data);
     var msg = JSON.parse(event.data);
-    if (msg.url) {
+    if (msg.url !== undefined) {
       self.shortURL('http://127.0.0.1:8080/' + msg.url);
     }else{
       self.forwards.unshift(new ClientForward(msg.ip, msg.agent, msg.referer));
