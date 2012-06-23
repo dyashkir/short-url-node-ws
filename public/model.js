@@ -23,10 +23,22 @@ var UrlShortenerViewModel = function() {
   };
 
   self.dummy = function(){
-    self.forwards.unshift(new ClientForward(count++,'127.0.0.1', '8080', 'iPhone', 'meeee'));
+    self.socket.send('woooo');
+    //self.forwards.unshift(new ClientForward(count++,'127.0.0.1', '8080', 'iPhone', 'meeee'));
   };
   
-  self.forwards.push(new ClientForward(count++,'127.0.0.1', '8080', 'iPhone', 'meeee'));
+  
+  self.socket = new WebSocket('ws://127.0.0.1:8090/', 'live-hits-protocol');
+
+  self.socket.onopen = function(event) {
+    console.log('opned');
+    self.socket.send('woooo');
+  }
+  self.socket.onmessage = function(event) {
+    console.log(event.data);
+    self.forwards.unshift(new ClientForward(count++, event.data, '', '',''));
+  }
+  
 }
 
 ko.applyBindings(new UrlShortenerViewModel());
