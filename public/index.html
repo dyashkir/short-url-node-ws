@@ -13,7 +13,7 @@
     <form class="well" data-bind="submit: submitURL">
       <legend>Shorten ur urls</legend>
       <label>Your URL:</label>
-      <input data-bind="value: userURL"/>
+      <input data-bind='value: userURL, valueUpdate: "afterkeydown"'/>
       <button type="submit" class="btn btn-success" data-bind="enable: userURL().length > 0">Short it!</button>
       <button class="btn" data-bind="click: dummy">Add dummy</button>
       <label>Short URL:</label>
@@ -39,6 +39,7 @@
           </tr>
       </tbody>
       </table>
-  </div>
-  <script type="text/javascript" src="model.js"></script>
+    </div>
+
+<script type="text/javascript" src="model.js"></script>
 </body>
