@@ -13,7 +13,9 @@ var UrlShortenerViewModel = function() {
   self.userURL = ko.observable('');
   self.shortURL = ko.observable('');
   self.forwards = ko.observableArray([]);
-
+  self.tweetURL = ko.computed(function(){
+    return 'http://twitter.com/home?status=' + encodeURIComponent(self.shortURL() + ' #devto'); 
+  });
   self.submitURL = function(){
     self.socket.send(JSON.stringify({url:self.userURL()}));
   };

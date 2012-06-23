@@ -16,8 +16,8 @@
       <button type="submit" class="btn btn-success" data-bind="enable: userURL().length > 0">Short it!</button>
       <label>Short URL:</label>
       <a data-bind="attr: { href: shortURL}, text: shortURL"></a>
-      <a href="https://twitter.com/share" data-bind='attr: {"data-text": shortURL}' class="twitter-share-button" data-via="dyashkir" data-count="none" data-hashtags="test">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </br>
+      <a class="btn btn-primary" target="_blank" data-bind="attr: { href: tweetURL }">Tweet it!</a>
     </form>
     <table class="table table-striped">
         <thead>
