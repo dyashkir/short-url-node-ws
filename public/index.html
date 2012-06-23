@@ -4,8 +4,7 @@
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script type="text/javascript" src="http://knockoutjs.com/js/knockout-2.1.0.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
     </head>
 <body>
 
@@ -15,16 +14,14 @@
       <label>Your URL:</label>
       <input data-bind='value: userURL, valueUpdate: "afterkeydown"'/>
       <button type="submit" class="btn btn-success" data-bind="enable: userURL().length > 0">Short it!</button>
-      <button class="btn" data-bind="click: dummy">Add dummy</button>
       <label>Short URL:</label>
-      <p data-bind="text: shortURL"></p>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-text="testing url" data-via="dyashkir" data-count="none" data-hashtags="test">Tweet</a>
+      <a data-bind="attr: { href: shortURL}, text: shortURL"></a>
+      <a href="https://twitter.com/share" data-bind='attr: {"data-text": shortURL}' class="twitter-share-button" data-via="dyashkir" data-count="none" data-hashtags="test">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </form>
     <table class="table table-striped">
         <thead>
           <tr>
-            <th>Count</th>
             <th>IP</th>
             <th>Referer</th>
             <th>User Agent</th>
@@ -32,10 +29,9 @@
         </thead>
         <tbody data-bind="foreach: forwards">
           <tr>
-            <td data-bind="text: count">1</td>
-            <td data-bind="text: ip">127.0.0.1</td>
-            <td data-bind="text: referer">http://tweetsdfsdfsfdsf</td>
-            <td data-bind="text: userAgent">Mozial;kaasdkjhksjhdfskjfhskfhjshfskfdhskfjh</td>
+            <td data-bind="text: ip"></td>
+            <td data-bind="text: referer"></td>
+            <td data-bind="text: userAgent"></td>
           </tr>
       </tbody>
       </table>
