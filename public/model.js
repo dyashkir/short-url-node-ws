@@ -8,8 +8,9 @@ var ClientForward =  function (ip, userAgent, referer){
 
 var UrlShortenerViewModel = function() {
 
-  var self = this;
 
+  var self = this;
+  self.origin = '184.106.117.173'; 
   self.userURL = ko.observable('');
   self.shortURL = ko.observable('');
   self.forwards = ko.observableArray([]);
@@ -20,15 +21,15 @@ var UrlShortenerViewModel = function() {
     self.socket.send(JSON.stringify({url:self.userURL()}));
   };
 
-  self.socket = new WebSocket('ws://127.0.0.1:8090/', 'live-hits-protocol');
-
+  console.dir(window.location);
+  self.socket = new WebSocket('ws://' + self.origin + ':8090/', 'live-hits-protocol');
   self.socket.onopen = function(event) {
     console.log('opned');
   }
   self.socket.onmessage = function(event) {
     var msg = JSON.parse(event.data);
     if (msg.url !== undefined) {
-      self.shortURL('http://127.0.0.1:8080/' + msg.url);
+      self.shortURL('http://' + self.origin + '/' + msg.url);
     }else{
       self.forwards.unshift(new ClientForward(msg.ip, msg.agent, msg.referer));
     }

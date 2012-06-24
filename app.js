@@ -34,7 +34,7 @@ var server = http.createServer(function (req, res) {
     res.end();
   }
 
-}).listen(8080);
+}).listen(3000);
 
 //http server to be user for listening for websocket requests
 var httpWsServer = http.createServer(function(req,res) {
