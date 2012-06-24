@@ -8,7 +8,6 @@ var ClientForward =  function (ip, userAgent, referer){
 
 var UrlShortenerViewModel = function() {
 
-
   var self = this;
   self.origin = '184.106.117.173'; 
   self.userURL = ko.observable('');
@@ -29,7 +28,7 @@ var UrlShortenerViewModel = function() {
   self.socket.onmessage = function(event) {
     var msg = JSON.parse(event.data);
     if (msg.url !== undefined) {
-      self.shortURL('http://' + self.origin + '/' + msg.url);
+      self.shortURL('http://' + self.origin + ':8080/' + msg.url);
     }else{
       self.forwards.unshift(new ClientForward(msg.ip, msg.agent, msg.referer));
     }

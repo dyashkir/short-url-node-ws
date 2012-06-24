@@ -1,10 +1,21 @@
 var http = require('http'),
     url = require('url'),
     fs = require('fs'),
-    WebSocketServer = require('websocket').server;
+    WebSocketServer = require('websocket').server,
+    fs = require('fs');
 
 var store = {};
 var counter = 0;
+
+//serve our main page
+fs.readFile('public/index.html', function (err, html) {
+  http.createServer(function(request, response) {  
+    response.writeHeader(200, {"Content-Type": "text/html"});  
+    response.write(html);  
+    response.end();  
+  }).listen(3000);
+});
+
 
 //normal http server used to forward users from short to original
 var server = http.createServer(function (req, res) {
