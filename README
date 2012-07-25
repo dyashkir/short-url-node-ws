@@ -1,0 +1,5 @@
+Simple example url shortener in nodejs, uses websocket to update analytics on the url being tracked, ui is using knockout.js
+
+Was used for a devto presentation on node.js
+
+Planning on cleaning this up in the future. Needs some Redis storage love, sessions, retrieving url history etc
